@@ -2,6 +2,7 @@ order-ms is server repo and stock-ms is a client repo
 Circuit Breaker & Retry 
 
 ==================
+
 validate the circuit breaker
 http://localhost:8080/api/orders
 method type: Post
