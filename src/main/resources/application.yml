@@ -1,0 +1,33 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      OrderMs:
+        sliding-window-size: 10
+        sliding-window-type: count_based
+        failure-rate-threshold: 20
+        minimum-number-of-calls: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 3
+        event-consumer-buffer-size: 10
+        register-health-indicator: true
+  retry:
+    instances:
+      OrderRetry:
+        max-attempts: 3
+        wait-duration: 5s
+
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
